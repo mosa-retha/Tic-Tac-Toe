@@ -1,4 +1,5 @@
 from GameSystem import MainGame
+
 # from random import randint, choice
 
 
@@ -32,59 +33,9 @@ def f():
     return f
 
 
-# direc = {
-#     0: [0, 1, 2],
-#     1: [1, 4, 7],
-#     2: [2, 5, 8],
-#     3: [3, 4, 5],
-#     4: [0, 3, 6],
-#     5: [6, 7, 8],
-#     6: [0, 4, 8],
-#     7: [2, 4, 6]
-# }
-
-
-# def blocking():
-#     x_indice = [i for i, value in enumerate(tic) if value == "X"]
-#     print(x_indice)
-#     for key, item in direc.items():
-#         for x in item:
-#             if x in x_indice:
-
-
-# def taken(com):
-#     if tic[com] == "X" or tic[com] == "O":
-#         return taken(com)
-#     else:
-#         tic[com] = "O"
-
 game = MainGame()
-#
-# rand = randint(0, 8)
-# print(rand)
+
 tic = game.tic
-# winpos = {key: item for (key, item) in direc.items() if rand in item}
-#
-#
-# for key, item in winpos.items():
-#     for id in item:
-#         if rand == id:
-#             item.remove(id)
-
-
-# for key, item in winpos.items():
-#     if tic[item[0]] == " " and tic[item[1]] == " ":
-#         pick = choice(key)
-#
-#         break
-
-# def com_select():
-#     fpick = choice(list(winpos.keys()))
-#     print(fpick)
-#     if tic[item[0]] == " " and tic[item[1]] == " ":
-#         print(winpos[fpick])
-#         spick = choice(winpos[fpick])
-#         taken(spick)
 
 
 print(f())
@@ -92,13 +43,11 @@ game_started = True
 
 # the game loop
 while game_started:
-    game.taken("X")
-    print(tic)
+    turn = game.turn_x_o()
+    if not game.taken(turn):
+        print(f())
+        continue
     print(f())
-    if game.win_check("X"):
+    if game.win_check(turn):
         break
-    game.taken("O")
-    print(tic)
-    print(f())
-    if game.win_check("O"):
-        break
+
