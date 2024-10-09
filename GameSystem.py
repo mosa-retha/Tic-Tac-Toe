@@ -7,6 +7,15 @@ class MainGame(Key):
         self.key = {
             7: 0, 8: 1, 9: 2, 4: 3, 5: 4, 6: 5, 1: 6, 2: 7, 3: 8
         }
+        self.turn = True
+
+    def turn_x_o(self):
+        self.turn = not self.turn
+        if self.turn:
+            return "X"
+        else:
+            return "O"
+
 
     # checking if the winning conditions are met
     def win_check(self, n):
@@ -61,14 +70,22 @@ class MainGame(Key):
         else:
             return False
 
+
+    def game_input(self, x_o):
+        player = self.key[int(input(f"{x_o}: "))]
+        print(player)
+        return player
+
+
     #  checks whether a position taken yet, if not an 'X' or 'O' is assigned to that position
-    def taken(self, p):
-        player = self.key[int(input(f"{p}: "))]
-        if self.tic[player] == "X" or self.tic[player] == "O":
+    def taken(self, x_o):
+        game_input = self.game_input(x_o)
+        if self.tic[game_input] == "X" or self.tic[game_input] == "O":
             print('This position is taken please pick another one')
-            return self.taken(p)
+            return False
         else:
-            self.tic[player] = p
+            self.tic[game_input] = x_o
+            return True
 
 # --- below is for printing the ascii art of 'X' or 'O' to the designated position ---
     def one(self, num):
