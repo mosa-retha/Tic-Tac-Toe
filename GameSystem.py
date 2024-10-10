@@ -18,50 +18,50 @@ class MainGame(Key):
 
 
     # checking if the winning conditions are met
-    def win_check(self, n):
-        if self.tic[0] == n and self.tic[1] == n and self.tic[2] == n:
+    def win_check(self, n, tic_list):
+        if tic_list[0] == n and tic_list[1] == n and tic_list[2] == n:
             if n == "X":
                 print("Player 1 Wins!")
             elif n == "O":
                 print("Player 2 Wins!")
             return True
-        elif self.tic[3] == n and self.tic[4] == n and self.tic[5] == n:
+        elif tic_list[3] == n and tic_list[4] == n and tic_list[5] == n:
             if n == "X":
                 print("Player 1 Wins!")
             elif n == "O":
                 print("Player 2 Wins!")
             return True
-        elif self.tic[6] == n and self.tic[7] == n and self.tic[8] == n:
+        elif tic_list[6] == n and tic_list[7] == n and tic_list[8] == n:
             if n == "X":
                 print("Player 1 Wins!")
             elif n == "O":
                 print("Player 2 Wins!")
             return True
-        elif self.tic[0] == n and self.tic[3] == n and self.tic[6] == n:
+        elif tic_list[0] == n and tic_list[3] == n and tic_list[6] == n:
             if n == "X":
                 print("Player 1 Wins!")
             elif n == "O":
                 print("Player 2 Wins!")
             return True
-        elif self.tic[1] == n and self.tic[4] == n and self.tic[7] == n:
+        elif tic_list[1] == n and tic_list[4] == n and tic_list[7] == n:
             if n == "X":
                 print("Player 1 Wins!")
             elif n == "O":
                 print("Player 2 Wins!")
             return True
-        elif self.tic[2] == n and self.tic[5] == n and self.tic[8] == n:
+        elif tic_list[2] == n and tic_list[5] == n and tic_list[8] == n:
             if n == "X":
                 print("Player 1 Wins!")
             elif n == "O":
                 print("Player 2 Wins!")
             return True
-        elif self.tic[0] == n and self.tic[4] == n and self.tic[8] == n:
+        elif tic_list[0] == n and tic_list[4] == n and tic_list[8] == n:
             if n == "X":
                 print("Player 1 Wins!")
             elif n == "O":
                 print("Player 2 Wins!")
             return True
-        elif self.tic[2] == n and self.tic[4] == n and self.tic[6] == n:
+        elif tic_list[2] == n and tic_list[4] == n and tic_list[6] == n:
             if n == "X":
                 print("Player 1 Wins!")
             elif n == "O":
