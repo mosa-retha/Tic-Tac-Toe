@@ -1,4 +1,5 @@
 from GameSystem import MainGame
+from Minimax import MiniMax
 
 # from random import randint, choice
 
@@ -34,7 +35,7 @@ def f():
 
 
 game = MainGame()
-
+minimax = MiniMax()
 tic = game.tic
 
 
@@ -44,10 +45,11 @@ game_started = True
 # the game loop
 while game_started:
     turn = game.turn_x_o()
-    if not game.taken(turn):
+    print(minimax.minimax(tic))
+    if not game.taken(turn, tic):
         print(f())
         continue
     print(f())
-    if game.win_check(turn):
+    if game.win_check(turn, tic):
         break
 
