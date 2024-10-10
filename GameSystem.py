@@ -78,14 +78,17 @@ class MainGame(Key):
 
 
     #  checks whether a position taken yet, if not an 'X' or 'O' is assigned to that position
-    def taken(self, x_o):
-        game_input = self.game_input(x_o)
-        if self.tic[game_input] == "X" or self.tic[game_input] == "O":
+    def taken(self, x_o, tic_list, num=0, ai = False):
+        if ai:
+            game_input = num
+        else:
+            game_input = self.game_input(x_o)
+        if tic_list[game_input] == " ":
+            tic_list[game_input] = x_o
+            return True
+        else:
             print('This position is taken please pick another one')
             return False
-        else:
-            self.tic[game_input] = x_o
-            return True
 
 # --- below is for printing the ascii art of 'X' or 'O' to the designated position ---
     def one(self, num):
