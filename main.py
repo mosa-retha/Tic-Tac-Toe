@@ -1,5 +1,8 @@
+from more_itertools.more import first
+
 from GameSystem import MainGame
-from Minimax import MiniMax
+
+from MiniMax import MiniMaxNode
 
 # from random import randint, choice
 
@@ -21,7 +24,6 @@ def print_ascii_art():
 game = MainGame()
 
 
-minimax = MiniMax()
 tic = game.tic
 
 
@@ -30,8 +32,21 @@ game_started = True
 
 # the game loop
 while game_started:
-    turn = game.turn_x_o()
+    turn = "X"
+
     if not game.taken(turn, tic):
+        print(print_ascii_art())
+        continue
+
+    if game.win_check(turn, tic):
+        break
+
+    turn = "O"
+    node = MiniMaxNode(tic)
+    node.insert(tic, turn)
+    num = node.minimax(turn)
+
+    if not game.taken(turn,tic, num=num[2] , ai=True):
         print(print_ascii_art())
         continue
     print(print_ascii_art())

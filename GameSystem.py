@@ -18,58 +18,58 @@ class MainGame(Key):
 
 
     # checking if the winning conditions are met
-    def win_check(self, n, tic_list):
-        if tic_list[0] == n and tic_list[1] == n and tic_list[2] == n:
-            if n == "X":
+    def win_check(self, n, tic_list, ai=False):
+        if " " not in tic_list:
+            return None
+        elif tic_list[0] == n and tic_list[1] == n and tic_list[2] == n:
+            if n == "X" and ai == False:
                 print("Player 1 Wins!")
-            elif n == "O":
+            elif n == "O" and ai == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[3] == n and tic_list[4] == n and tic_list[5] == n:
-            if n == "X":
+            if n == "X" and ai == False:
                 print("Player 1 Wins!")
-            elif n == "O":
+            elif n == "O" and ai == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[6] == n and tic_list[7] == n and tic_list[8] == n:
-            if n == "X":
+            if n == "X" and ai == False:
                 print("Player 1 Wins!")
-            elif n == "O":
+            elif n == "O" and ai == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[0] == n and tic_list[3] == n and tic_list[6] == n:
-            if n == "X":
+            if n == "X" and ai == False:
                 print("Player 1 Wins!")
-            elif n == "O":
+            elif n == "O" and ai == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[1] == n and tic_list[4] == n and tic_list[7] == n:
-            if n == "X":
+            if n == "X" and ai == False:
                 print("Player 1 Wins!")
-            elif n == "O":
+            elif n == "O" and ai == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[2] == n and tic_list[5] == n and tic_list[8] == n:
-            if n == "X":
+            if n == "X" and ai == False:
                 print("Player 1 Wins!")
-            elif n == "O":
+            elif n == "O" and ai == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[0] == n and tic_list[4] == n and tic_list[8] == n:
-            if n == "X":
+            if n == "X" and ai == False:
                 print("Player 1 Wins!")
-            elif n == "O":
+            elif n == "O" and ai == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[2] == n and tic_list[4] == n and tic_list[6] == n:
-            if n == "X":
+            if n == "X" and ai == False:
                 print("Player 1 Wins!")
-            elif n == "O":
+            elif n == "O" and ai == False:
                 print("Player 2 Wins!")
             return True
-        elif " " not in tic_list:
-            print("Draw!")
-            return True
+
         else:
             return False
 
@@ -82,6 +82,7 @@ class MainGame(Key):
 
     #  checks whether a position taken yet, if not an 'X' or 'O' is assigned to that position
     def taken(self, x_o, tic_list, num=0, ai = False):
+
         if ai:
             game_input = num
         else:
