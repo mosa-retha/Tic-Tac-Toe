@@ -18,58 +18,59 @@ class MainGame(Key):
 
 
     # checking if the winning conditions are met
-    def win_check(self, n, tic_list, ai=False):
-        if " " not in tic_list:
-            return None
-        elif tic_list[0] == n and tic_list[1] == n and tic_list[2] == n:
-            if n == "X" and ai == False:
+    def win_check(self, n, tic_list, cpu=False):
+
+        if tic_list[0] == n and tic_list[1] == n and tic_list[2] == n:
+            if n == "X" and cpu == False:
                 print("Player 1 Wins!")
-            elif n == "O" and ai == False:
+            elif n == "O" and cpu == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[3] == n and tic_list[4] == n and tic_list[5] == n:
-            if n == "X" and ai == False:
+            if n == "X" and cpu == False:
                 print("Player 1 Wins!")
-            elif n == "O" and ai == False:
+            elif n == "O" and cpu == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[6] == n and tic_list[7] == n and tic_list[8] == n:
-            if n == "X" and ai == False:
+            if n == "X" and cpu == False:
                 print("Player 1 Wins!")
-            elif n == "O" and ai == False:
+            elif n == "O" and cpu == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[0] == n and tic_list[3] == n and tic_list[6] == n:
-            if n == "X" and ai == False:
+            if n == "X" and cpu == False:
                 print("Player 1 Wins!")
-            elif n == "O" and ai == False:
+            elif n == "O" and cpu == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[1] == n and tic_list[4] == n and tic_list[7] == n:
-            if n == "X" and ai == False:
+            if n == "X" and cpu == False:
                 print("Player 1 Wins!")
-            elif n == "O" and ai == False:
+            elif n == "O" and cpu == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[2] == n and tic_list[5] == n and tic_list[8] == n:
-            if n == "X" and ai == False:
+            if n == "X" and cpu == False:
                 print("Player 1 Wins!")
-            elif n == "O" and ai == False:
+            elif n == "O" and cpu == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[0] == n and tic_list[4] == n and tic_list[8] == n:
-            if n == "X" and ai == False:
+            if n == "X" and cpu == False:
                 print("Player 1 Wins!")
-            elif n == "O" and ai == False:
+            elif n == "O" and cpu == False:
                 print("Player 2 Wins!")
             return True
         elif tic_list[2] == n and tic_list[4] == n and tic_list[6] == n:
-            if n == "X" and ai == False:
+            if n == "X" and cpu == False:
                 print("Player 1 Wins!")
-            elif n == "O" and ai == False:
+            elif n == "O" and cpu == False:
                 print("Player 2 Wins!")
             return True
-
+        elif " " not in tic_list:
+            if not cpu: print("Tie!")
+            return None
         else:
             return False
 
@@ -81,17 +82,21 @@ class MainGame(Key):
 
 
     #  checks whether a position taken yet, if not an 'X' or 'O' is assigned to that position
-    def taken(self, x_o, tic_list, num=0, ai = False):
+    def taken(self, x_o, tic_list, num=0, cpu = False):
 
-        if ai:
+        if cpu:
             game_input = num
         else:
             game_input = self.game_input(x_o)
-        if tic_list[game_input] == " ":
-            tic_list[game_input] = x_o
-            return True
-        else:
-            print('This position is taken please pick another one')
+        try:
+            if tic_list[game_input] == " ":
+                tic_list[game_input] = x_o
+                return True
+            else:
+                print('This position is taken please pick another one')
+                return False
+        except TypeError:
+            print('Please enter a number between 1-9')
             return False
 
 # --- below is for printing the ascii art of 'X' or 'O' to the designated position ---
