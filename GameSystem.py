@@ -76,9 +76,13 @@ class MainGame(Key):
 
 
     def game_input(self, x_o):
-        player = self.key[int(input(f"{x_o}: "))]
-        print(player)
-        return player
+        try:
+            player = self.key[int(input(f"{x_o}: "))]
+            print(player)
+            return player
+        except (KeyError, ValueError):
+            print('Please enter a number between 1-9')
+            return self.game_input(x_o)
 
 
     #  checks whether a position taken yet, if not an 'X' or 'O' is assigned to that position
@@ -95,7 +99,7 @@ class MainGame(Key):
             else:
                 print('This position is taken please pick another one')
                 return False
-        except (KeyError, ValueError):
+        except (KeyError, ValueError, TypeError):
             print('Please enter a number between 1-9')
             return False
 
