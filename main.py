@@ -1,10 +1,7 @@
-from more_itertools.more import first
-
 from GameSystem import MainGame
 
 from MiniMax import MiniMaxNode
 
-# from random import randint, choice
 
 
 # prints ascii art step by step
