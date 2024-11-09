@@ -9,7 +9,7 @@ class MiniMaxNode(MainGame):
         self.children = []
         self.depth = depth
         self.parent_index = parent_index
-        self.winner = self.win_check(turn, tac_list, ai=True)
+        self.winner = self.win_check(turn, tac_list, cpu=True)
 
 
     def turn_x_o_(self, turn):
@@ -34,6 +34,9 @@ class MiniMaxNode(MainGame):
 
     def minimax(self, turn):
         results = []
+        if self.tic_list[4] == " ":
+            return -1, self.depth, 4
+
         if self.winner is None and " " not in self.tic_list:
             return 0, self.depth, self.parent_index
         elif self.winner:
@@ -53,18 +56,17 @@ class MiniMaxNode(MainGame):
                     results.append(ch)
                 elif isinstance(ch, list) and not ch in results:
                     results.extend(ch)
-                elif isinstance(ch, set) and not ch in results:
-                    results.append(ch)
+
 
             r = set(filter(lambda x: x[0] == 1, results))
 
             try :
-                w = sorted(r, key=lambda x: x[1])
-                return w[0]
+                win = sorted(r, key=lambda x: x[1])
+                return win[0]
             except:
                 r = set(filter(lambda x: x[0] == 0, results))
-                w = sorted(r, key=lambda x: x[1])
-                return w
+                win = sorted(r, key=lambda x: x[1])
+                return win[0]
         else:
             for child in self.children:
                 ch = child.minimax("O")
@@ -72,18 +74,18 @@ class MiniMaxNode(MainGame):
                     results.append(ch)
                 elif isinstance(ch, list) and not ch in results:
                     results.extend(ch)
-            # print(results)
+
 
             r = set(filter(lambda x: x[0] == -1, results))
 
             try :
 
-                w = sorted(r, key=lambda x: x[1])
-                return w[0]
+                win = sorted(r, key=lambda x: x[1])
+                return win[0]
             except:
                 r = set(filter(lambda x: x[0] == 0, results))
-                w = sorted(r, key=lambda x: x[1])
-                return w[0]
+                win = sorted(r, key=lambda x: x[1])
+                return win[0]
 
 
 
@@ -95,5 +97,5 @@ if __name__ == "__main__":
                 "X", " ", " "]
     node = MiniMaxNode(tic_list)
     node.insert(tic_list, "O")
-    print("w results: ",node.minimax("O"))
+    print("win results: ",node.minimax("O"))
 
