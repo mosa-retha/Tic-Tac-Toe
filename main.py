@@ -105,12 +105,14 @@ def play_type():
             print("Please enter a valid input")
 
 
-
-if __name__ == "__main__":
+def main():
     print(print_welcome_ascii())
     play_type()
     print("Game Over")
     print("Thanks for playing")
     print("Bye!")
+
+if __name__ == "__main__":
+    main()
 
 
