@@ -92,11 +92,13 @@ def play_with_player():
 def play_type():
     while True:
         play = input("Do you want to play with CPU or Player? (CPU/Player): ").lower()
-        print(print_ascii_art())
+
         if play == "cpu":
+            print(print_ascii_art())
             play_with_cpu()
             break
         elif play == "player":
+            print(print_ascii_art())
             play_with_player()
             break
         else:
