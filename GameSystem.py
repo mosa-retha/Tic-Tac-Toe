@@ -95,7 +95,7 @@ class MainGame(Key):
             else:
                 print('This position is taken please pick another one')
                 return False
-        except TypeError:
+        except (KeyError, ValueError):
             print('Please enter a number between 1-9')
             return False
 
