@@ -1,4 +1,5 @@
 from GameSystem import MainGame
+from random import choice
 
 
 class MiniMaxNode(MainGame):
@@ -34,8 +35,13 @@ class MiniMaxNode(MainGame):
 
     def minimax(self, turn):
         results = []
+        available_choices = [ i for i in range(9) if self.tic_list[i] == " "]
         if self.tic_list[4] == " ":
             return -1, self.depth, 4
+
+        if len(available_choices) == 8:
+            return -1, self.depth, choice([0,2,6,8])
+
 
         if self.winner is None and " " not in self.tic_list:
             return 0, self.depth, self.parent_index
