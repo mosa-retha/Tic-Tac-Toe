@@ -117,9 +117,9 @@ def play_type(play_view=False):
         if play_view_input == "gui":
             # Setup for Turtle Graphics GUI
             print("Turtle Graphics")
-            print("Please wait for the turtle graphics to load...")
-            print("A window will pop up")
-            print("Enter your input in the console")
+            print("Please wait for the turtle graphics to load...\n")
+
+            print("Enter your input in the console\n")
             print("Use the num pad to enter your input")
             play = t.get_user_player_type()  # Choose CPU or player for Turtle GUI
             t.set_window_properties()  # Setup Turtle window properties
