@@ -34,6 +34,10 @@ This is a Python-based Tic-Tac-Toe game that can be played either in a **command
     - **GameSystem** and **MiniMax**: Custom modules for handling game logic and AI decision-making.
     - **turtleG**: Custom module for managing the Turtle graphics UI.
 
+To install the necessary dependencies, use the `requirements.txt` file provided. You can install the dependencies using the following command:
+```bash
+pip install -r requirements.txt
+```
 ## Installation and Setup
 
 1. Clone the repository:
