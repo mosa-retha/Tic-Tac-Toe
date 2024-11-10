@@ -38,10 +38,18 @@ def get_user_player_type():
     root.mainloop()
     return play_var.get().lower()
 
-def draw_square():
+def draw_square(size=150, fill=False):
+
+    if fill:
+        pencolor("white")
+        fillcolor("white")
+        begin_fill()
     for i in range(4):
-        forward(150)
+        forward(size)
         right(90)
+    if fill:
+        end_fill()
+        pencolor("black")
 
 
 def erase_line(x1, y1, x2, y2):
@@ -61,12 +69,15 @@ def draw_number(number, coord, erase=False):
     setpos(x - 20, y - 40)  # Adjust position to center the number
     pendown()
     if erase:
-        pencolor("white")  # Use the background color to erase
+        penup()
+        setpos(x - 20, y + 40)  # Adjust position to top-left corner of the square
+        pendown()
+        draw_square(80, fill=True)  # Fill the square with the background color
+
     else:
         pencolor("lightgray")  # Use a light color to simulate translucency
-    write(number, font=("Arial", 48, "normal"))
-    pencolor("black")  # Reset the color to black
-
+        write(number, font=("Arial", 48, "normal"))
+        pencolor("black")  # Reset the color to black
 
 def draw_board():
     hideturtle()
