@@ -1,6 +1,6 @@
 from GameSystem import MainGame
 from MiniMax import MiniMaxNode
-import turtleG as t  # Custom module for Turtle graphics
+import turtleG  # Custom module for Turtle graphics
 
 # Function to print the game board in ASCII art, row by row
 def print_ascii_art():
@@ -23,7 +23,7 @@ tic = game.tic  # Tic-tac-toe board state array
 
 # Function to print a welcome ASCII art message
 def print_welcome_ascii():
-    # Welcome ASCII art for a fun introduction to the game
+    # Welcome, ASCII art for a fun introduction to the game
     return """ 
                .__                                  __             __  .__           __                    __                  ._.
 __  _  __ ____ |  |   ____  ____   _____   ____   _/  |_  ____   _/  |_|__| ____   _/  |______    ____   _/  |_  ____   ____   | |
@@ -46,15 +46,15 @@ def display_turtle_graphics():
     # Iterate over each position on the tic-tac-toe board
     for i in range(9):
         # Check if position 'i' has an 'X' and hasn't been drawn yet
-        if tic[i] == "X" and i not in t.printed:
-            t.draw_number(i, t.key[i], erase=True)  # Erase the number in the cell
-            t.draw_X(t.key[i])  # Draw the 'X' symbol in the cell
-            t.printed.append(i)  # Mark this cell as drawn
+        if tic[i] == "X" and i not in turtleG.printed:
+            turtleG.draw_number(i, turtleG.key[i], erase=True)  # Erase the number in the cell
+            turtleG.draw_X(turtleG.key[i])  # Draw the 'X' symbol in the cell
+            turtleG.printed.append(i)  # Mark this cell as drawn
         # Check if position 'i' has an 'O' and hasn't been drawn yet
-        elif tic[i] == "O" and i not in t.printed:
-            t.draw_number(i, t.key[i], erase=True)  # Erase the number in the cell
-            t.draw_O(t.key[i])  # Draw the 'O' symbol in the cell
-            t.printed.append(i)  # Mark this cell as drawn
+        elif tic[i] == "O" and i not in turtleG.printed:
+            turtleG.draw_number(i, turtleG.key[i], erase=True)  # Erase the number in the cell
+            turtleG.draw_O(turtleG.key[i])  # Draw the 'O' symbol in the cell
+            turtleG.printed.append(i)  # Mark this cell as drawn
 
 # Main game loop for playing against the CPU
 def play_with_cpu(play_view=False):
@@ -113,7 +113,6 @@ def play_type(play_view=False):
     while True:
         # Ask user to choose CLI or GUI display
         play_view_input = input("Do you want to play with the CLI or GUI? (CLI/GUI): ").lower()
-        play = ""
         if play_view_input == "gui":
             # Setup for Turtle Graphics GUI
             print("Turtle Graphics")
@@ -121,9 +120,9 @@ def play_type(play_view=False):
 
             print("Enter your input in the console\n")
             print("Use the num pad to enter your input")
-            play = t.get_user_player_type()  # Choose CPU or player for Turtle GUI
-            t.set_window_properties()  # Setup Turtle window properties
-            t.draw_board()  # Draw initial tic-tac-toe board
+            play = turtleG.get_user_player_type()  # Choose CPU or player for Turtle GUI
+            turtleG.set_window_properties()  # Setup Turtle window properties
+            turtleG.draw_board()  # Draw initial tic-tac-toe board
             play_view = True
         elif play_view_input == "cli":
             # Setup for CLI ASCII Art display
