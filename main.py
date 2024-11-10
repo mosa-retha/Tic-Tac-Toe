@@ -45,19 +45,17 @@ def display_type(play_view):
 
 
 def display_turtle_graphics():
-    inverted_key = invert_dict(game.key)
     for i in range(9):
         if tic[i] == "X" and i not in t.printed:
-            t.draw_number(inverted_key[i], t.key[i], erase=True)
+            t.draw_number(i, t.key[i], erase=True)
             t.draw_X(t.key[i])
             t.printed.append(i)
         elif tic[i] == "O" and i not in t.printed:
-            t.draw_number(inverted_key[i], t.key[i], erase=True)
+            t.draw_number(i, t.key[i], erase=True)
             t.draw_O(t.key[i])
             t.printed.append(i)
 
-def invert_dict(d):
-    return {v: k for k, v in d.items()}
+
 
 def play_with_cpu(play_view=False):
     game_started = True
@@ -116,10 +114,10 @@ def play_type(play_view=False):
         play = ""
         if play_view_input == "gui":
             print("Turtle Graphics")
-            print("Please wait for the turtle graphics to load")
+            print("Please wait for the turtle graphics to load...")
             print("A window will pop up")
-            print("Please enter your input in the console")
-            print("Please use the num pad to enter your input")
+            print("Enter your input in the console")
+            print("Use the num pad to enter your input")
             play = t.get_user_player_type()
             t.set_window_properties()
             t.draw_board()
